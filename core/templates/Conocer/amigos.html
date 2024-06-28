@@ -1,0 +1,63 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+    <div style="position: relative; width: 100%; height: 600px; background-image: url('{% static 'img/amigosSuperior.jpeg' %}'); 
+    background-size: cover; background-position: center;">
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center" style="height: 100%;">
+        <div style="background-color: rgba(255, 255, 255, 0.8); padding: 20px; max-width: 800px;">
+            <h4 class="mt-1 display-5">
+                ¿Quieres pasar una noche inolvidable con tus amigos en Málaga? ¡Ven y canta en nuestro karaoke!
+            </h4>
+            <p class="mt-4">
+                ¿Necesitas ayuda para elegir la sala perfecta? ¡Contáctanos! En Taró, ofrecemos salas para 
+                grupos de 4, 6, 8, 10 y hasta 20 personas.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pb-5 mb-5 pt-5 mt-5">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 mb-4">
+                ¿Celebras un cumpleaños? 
+            </h4>
+            <p>
+                Tenemos tartas para 6 personas disponibles (recuerda hacer tu pedido con al menos 48 horas 
+                de antelación, ya que no entregamos los fines de semana). En nuestro local, encontrarás 
+                tartas de chocolate para 6 a 10 personas, pero también puedes pedir tartas más grandes, 
+                de diferentes sabores y personalizadas. Para más información o cualquier consulta, 
+                ¡contáctanos!
+            </p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <img alt="Amigos celebrando un cumpleaños en el karaoke" src="{% static 'img/amigosCumple.jpeg' %}" 
+            class="img-fluid">
+        </div>
+    </div>
+</div>
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="card shadow p-3 mb-5 rounded w-400 bg-opacity-10" style="background-color: rgba(136, 28, 219, 0.05);">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <img alt="Personas adultas celebrando un cumpleaños con tarta en una sala de karaoke" 
+                        src="{% static 'img/amigos1.jpeg' %}" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="col-md-6 d-flex flex-column justify-content-center">
+                        <p class="display-5">
+                            ¡Olvídate de todo lo que sabes sobre el karaoke!
+                        </p>
+                        <p>
+                            En Taró Karaoke, tienes la libertad total para cantar lo que quieras en un ambiente 
+                            festivo y elegante. Nuestro objetivo es brindarte la mejor noche. Insólito, musical, 
+                            insonorizado y alegre. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

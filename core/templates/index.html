@@ -1,0 +1,138 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+  <section>
+    <div class="bg-image position-relative" style="background-image: url('{% static 'img/portada.jpeg' %}'); 
+    background-size: cover; background-position: center; height: 100vh;">
+      <div class="mask position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.2)"></div>
+        <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h1 class="mb-0 text-white display-1">Taró</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container-fluid" style="background-color: black;">
+    <div class="full-width" style="background: #000; padding: 80px 0; position: relative; text-align: center; 
+    color: white; width: 100%;">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            Salas <span style="color: purple;">privadas</span> de karaoke y coctelería en 
+            <span style="color: purple;">Málaga</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+          <h2 class="mt-4 text-left pb-3">
+            Taró, la verdadera experiencia del karaoke en Málaga
+          </h2>
+          <p>
+              Inspirado en la idea asiática del karaoke, Taró ofrece una experiencia única en Málaga, donde 
+              disfrutarás de momentos emocionantes y de desconexión en un entorno acogedor y vibrante. Queremos 
+              que te sientas como en casa mientras creas recuerdos inolvidables rodeado de tus amigos y seres 
+              queridos.
+          </p>
+          <p class="mb-0">
+              Nuestras salas privadas te ofrecen un espacio exclusivo, lejos de las miradas indiscretas, donde 
+              podrás liberar tu talento musical sin inhibiciones. Además, te esperamos con una amplia carta 
+              de cócteles exclusivos para complementar tu experiencia.
+          </p>
+          <div class="text-center mt-4">
+            <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:introduccion' %}">
+                Saber más
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <img alt="Collage de amigos cantando" src="{% static "img/index1.jpeg" %}" style="max-width: 100%; 
+          height: auto;">
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="padding: 0 0 80px 0;">
+    <h1 class="text-center text-uppercase mt-5">
+      Una experiencia en el karaoke para cada ocasión
+    </h1>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 p-0 text-center">
+          <h3 class="pl-2 pr-2 pt-3">
+            ¡Que no canten victoria!
+          </h3>
+          <p class="pl-2 pr-2">
+            ¿Es posible que realmente conozcas a tus amigos antes de haberles oído cantar?
+          </p>
+          <div class="text-center mt-3">
+            <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:amigos' %}">
+              Saber más
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 p-0">
+          <img src="{% static 'img/amigos.jpeg' %}" alt="Grupo de amigos cantando" class="img-fluid">
+        </div>
+        <div class="col-md-3 col-sm-6 p-0 text-center">
+          <h3 class="pl-2 pr-2 pt-3">
+            Como en vuestra casa
+          </h3>
+          <p class="pl-2 pr-2">
+            Lo más peques también tienen derecho a pasárselo bien cantando.
+          </p>
+          <div class="text-center mt-3">
+            <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:familia' %}">
+              Saber más
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 p-0">
+          <img src="{% static 'img/familia.jpeg' %}" alt="Familia cantando" class="img-fluid">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 p-0">
+          <img src="{% static 'img/despedida.jpeg' %}" alt="Despedida de soltera" class="img-fluid">
+        </div>
+        <div class="col-md-3 col-sm-6 p-0 text-center">
+          <h3 class="pl-2 pr-2 pt-3">
+            ¡Despídete de la soltería!
+          </h3>
+          <p class="pl-2 pr-2">
+            Quizás no es la mejor decisión pero, ¡seguro que sí lo es depedirte de la soltería en <strong>Taró</strong>!
+          </p>
+          <div class="text-center mt-4">
+            <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:despedidaSoltero' %}">
+              Saber más
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 p-0">
+          <img src="{% static 'img/empresa.jpeg' %}" alt="Empleados cantando" class="img-fluid">
+        </div>
+        <div class="col-md-3 col-sm-6 p-0 text-center">
+          <h3 class="pl-2 pr-2 pt-3">
+            ¡Cántale las cuarenta al jefe!
+          </h3>
+          <p class="pl-2 pr-2">
+            Sal de la oficina y conoce mejor a tus compañeros de trabajo entre canción y cocktail.
+          </p>
+          <div class="text-center mt-4">
+            <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:compañerosTrabajo' %}">
+              Saber más
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,193 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+  <div style="position: relative; width: 100%; height: 500px; background-image: url('{% static 'img/introduccion2.jpg' %}'); 
+  background-size: cover; background-position: center; margin-bottom: 25%;">
+    <div style="position: absolute; top: 120%; left: 84%; right: -70%; transform: translate(-90%, -50%); text-align: center;">
+      <div style="position: relative; background-color: white; max-width: 1000px; margin: 20px auto; padding: 20px 60px;">
+        <h1 class="mt-1" style="text-align: center;">
+          Experimenta una nueva faceta del karaoke 
+        </h1>
+        <p class="mt-4">
+          Inspirado en las salas privadas de karaoke originarias de Asia, Taró ha transformado este concepto 
+          ofreciéndote auténticos espacios privados adornados con una variedad de decoraciones impresionantes.
+           Nuestra meta es simple: que te sumerjas en la música con total libertad y comodidad gracias a un 
+           equipamiento de primera calidad, cócteles diseñados especialmente para ti...
+        </p>
+        <p class="mb-0">
+          Ya sea en grupo con amigos, familiares o colegas de trabajo, te recibiremos con los brazos abiertos, 
+          ¡listos para brindarte una velada inolvidable.
+        </p>
+      </div>
+    </div>
+  </div>
+  {% comment %} Despliegue de la ventana de alert {% endcomment %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            ×
+          </button>
+          <h4>¡Recuerda!</h4>Los días de <strong>Taró</strong> en Málaga se rebajarán a la mitad tanto la reserva de las 
+                salas como nuestras bebidas dentro del local.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center">
+            <img alt="Salas privadas de karaoke" src="{% static "img/introSalaGrande.jpeg" %}" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 font-weight-bold mb-4">
+                Salas privadas de karaoke
+            </h4>
+            <p>
+                <strong>¡Dinos cuántos sois en vuestro grupo y te diremos qué sala es la más adecuada para vosotros!</strong> 
+                Ya vengas solo o con un grupo de 20 personas, tenemos el espacio ideal para acogerte en una sala privada 
+                adaptada al número de personas que seáis y a vuestros deseos.
+            </p>
+            <div class="text-center mt-4">
+                <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:tipoSalas' %}">
+                    Ver salas
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 font-weight-bold mb-4">
+              Explora nuestro extenso catálogo de canciones
+            </h4>
+            <p>
+              Con más de 20,000 canciones disponibles, ¡seguro que encontrarás la melodía perfecta para una noche 
+              de karaoke inolvidable! Para que estés listo para tu próxima sesión, te ofrecemos la opción de crear 
+              una cuenta de cliente en nuestro sitio web. Con tu cuenta, puedes armar tu propia lista de 
+              reproducción y tener tus canciones favoritas listas para cuando llegues. 
+            </p>
+            <div class="text-center mt-4">
+              <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:indexUsuario' %}">
+                Acceder o registrarse
+              </a>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <img alt="Catálogo de canciones" src="{% static "img/seleccionCanciones.jpg" %}" 
+          style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <img alt="Microfono con flores" src="{% static "img/cocteles.jpeg" %}" style="max-width: 100%; height: auto;">
+      </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 font-weight-bold mb-2">
+              Descubre nuestra selección de cócteles exclusivos
+            </h4>
+            <p>
+              ¿Qué prefieres tomar mientras disfrutas del karaoke en Taró? ¡La elección es tuya! Nuestro 
+              menú ofrece una amplia variedad de resfrescos, desde cócteles exclusivos hasta opciones 
+              clásicas que satisfarán tu paladar. ¡Ven y disfruta de una experiencia gastronómica única 
+              mientras cantas tus canciones favoritas!
+            </p>
+            <p>
+              Pincha en el botón de abajo para ver los imbatibles precios de nuestra carta.
+            </p>
+            {% comment %} Botón de llamada del modal de tarifa de bebidas {% endcomment %}
+            <div class="text-center mt-4">
+              <a id="verTarifasBebidas" class="btn btn-lg btn-outline-secondary" href="#!" data-toggle="modal" 
+              data-target="#modal-601512">Ver carta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 font-weight-bold mb-2">
+              Servicio de primera calidad
+            </h4>
+            <p>
+              Contamos con un equipo ideal para garantizar que tu noche de karaoke sea inolvidable.
+               Hemos seleccionado cuidadosamente los mejores equipos disponibles en el mercado para ofrecerte 
+               una experiencia de sonido excepcional.
+            <p>
+            </p>
+               Además, nuestras salas están equipadas con tablets que te permiten pedir bebidas sin tener que 
+               levantarte de tu asiento. ¡Simplemente haz clic y tu pedido llegará directamente a tu mesa!
+            </p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <img alt="Equipo de música de una sala" src="{% static "img/equipoMusica.jpg" %}" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <img alt="Amigos haciéndose un selfie cantando" src="{% static "img/fotomaton.jpeg" %}" 
+        style="max-width: 100%; height: auto;">
+      </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 font-weight-bold mb-2">
+              Llévate contigo los momentos más especiales de tu sesión
+            </h4>
+            <p>
+              Captura tus recuerdos mediante el vídeo de tu actuación. Para conservar tus momentos de 
+              diversión y libertad, te recomendamos que busques el vídeo de tu actuación al día 
+              siguiente en nuestra plataforma para usuarios. 
+            </p>
+            <p>
+              Utilizamos una cámara web para filmarte mientras cantas, con la letra de la canción 
+              desplazándose en la pantalla. Además, en nuestras salas más amplias, ¡aprovecha también nuestro 
+              fotomatón para hacer aún más inolvidable esta noche!
+            </p>
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h4 class="display-5 font-weight-bold mb-2">
+              ¿Dónde nos puedes encontrar?
+            </h4>
+            <p>
+              A cinco minutos andando desde la catedral, karaoke Taró cuenta con un emplazamiento muy estratégico
+              en Plaza Carbón para poder pasar un buen rato de diversión después de pasar el día visitando el centro 
+              de la ciudad o para tomarte "las últimas" antes de salir de fiesta.
+            <p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.035307027266!2d-4.42316872526799!3d36.721713272269604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f7bfd5996cb3%3A0x3436a3c6c1c3e2f0!2sC.%20Granada%2C%2022%2C%20Distrito%20Centro%2C%2029015%20M%C3%A1laga!5e0!3m2!1ses!2ses!4v1715263227798!5m2!1ses!2ses" 
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+      </div>
+    </div>
+  </div>
+{% comment %} Modal de tarifas de bebidas {% endcomment %}
+<div class="modal fade" id="modal-601512" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tarifas bebidas 2024</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Imagen" class="img-fluid">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<script src="{% static 'js/modalBebidas.js' %}"></script>
+{% endblock %}

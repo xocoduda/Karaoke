@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block titulo %}{% endblock %}</title>
+    {% load static %} 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <link rel="icon" href="/static/img/icon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{% static "css/estilos2.css" %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    {% block header %}
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top navbar-scroll" style="background-color: rgba(0, 0, 0, 0.5)">
+        <div class="container-fluid">
+          <a class="navbar-brand d-block logo" href="{% url 'core:indice' %}">
+            <img src="{% static 'img/tarologo.png' %}" height="60" alt="Logo karaoke"/>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active conocenos" aria-current="page" href="{% url 'core:introduccion' %}">¡Conócenos!</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link salas" href="{% url 'core:tipoSalas' %}">Salas</a>
+              </li>
+              <li class="nav-item">
+                <a id="verTarifasLinkBase" class="nav-link tarifas" href="#!" data-bs-toggle="modal" data-bs-target="#modal-601512">Tarifas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link programacion" href="{% url 'core:programacionSemanal' %}">Programación semanal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bonos" href="{% url 'core:bonos' %}">Bonos</a>
+              </li>
+              {% if request.user.is_authenticated and request.user.is_staff %}
+              <li class="nav-item pr-5">
+                <a class="nav-link admin" href="{% url 'admin:index' %}">Administración</a>
+              </li>
+              {% endif %}
+              {% if request.user.is_authenticated %}
+              <li class="nav-item me-3 me-lg-0">
+                <p class="text-white pt-2 pl-5">
+                  ¡Hola de nuevo, {{ request.user.username | capfirst }}!
+                </p>
+              </li>
+              {% endif %}
+            </ul>
+            <ul class="navbar-nav d-flex flex-row">
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link index" href="{% url 'core:indexUsuario' %}">
+                  <i class="fas fa-user-circle"></i>
+                </a>
+              </li>
+              {% if request.user.is_authenticated %}
+              <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link reserva" href="{% url 'core:listaSalas' %}">
+                  <img class="pb-1" src="{% static 'img/booking (1).png' %}" height="28" alt="Calendario señalado"/>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    {% comment %} Ventana modal de la tarifa de salas{% endcomment %}
+    <div class="modal fade" id="modal-601512" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tarifas de salas 2024</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img id="modalImage" src="" alt="Imagen" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %} 
+    {% block cuerpo %} {% endblock %} 
+    {% block footer %}
+    <footer class="text-white text-center text-lg-start bg-dark">
+      <div class="container p-4">
+        <div class="row mt-4">
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0 pr-5">
+            <h5 class="text-uppercase mb-4">Sobre nosotros</h5>
+            <p class="text-left">
+              En pleno corazón de Málaga ponemos a disposición del público el
+              lugar perfecto para disfrutar de una noche inolvidable.
+            </p>
+            <p>
+              ¿Te lo vas a perder?
+            </p>
+            <div class="mt-4">
+              <a href="https://www.facebook.com/profile.php?id=61560528690597" target="_blank" type="button" 
+              class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/karaoke.taro/" target="_blank" type="button"
+                class="btn btn-floating btn-light btn-lg"><i class="fab fa-instagram"></i></a>
+              <a href="https://twitter.com/karaoketaromlg" target="_blank" type="button" 
+              class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0 pr-5">
+            <h5 class="text-uppercase mb-4">Contáctanos</h5>
+            <ul class="fa-ul" style="margin-left: 1.65em">
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-home"></i></span>
+                <span class="ms-2">C. Granada, 22, Distrito Centro, 29015 Málaga</span>
+              </li>
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-envelope"></i></span
+                ><span class="ms-2">karaoketaromalaga@gmail.com</span>
+              </li>
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">951371714</span>
+              </li>
+              <li class="mb-3">
+                <a data-bs-toggle="modal" data-bs-target="#cookieModal" style="color: #ffffff; text-decoration:none;">
+                  <span class="fa-li"><i class="fas fa-cookie"></i></span>
+                  <span class="ms-2">Política de cookies</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          {% comment %} Ventana modal de la politica de cookies {% endcomment %}
+          <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-black" id="cookieModalLabel">Política de cookies</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="{% static "img/cookies.jpeg" %}" alt="Política de cookies" style="max-width: 100%;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Horario</h5>
+            <table class="table text-center text-white">
+              <tbody class="fw-normal">
+                <tr>
+                  <td>Miércoles - Jueves:</td>
+                  <td>19:00 - 23:00</td>
+                </tr>
+                <tr>
+                  <td>Viernes - Sábado:</td>
+                  <td>17:00 - 3:30</td>
+                </tr>
+                <tr>
+                  <td>Domingo:</td>
+                  <td>17:00 - 00:00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        <strong>Juan Antonio Buenestado Gómez © 2024</strong> Todos los derechos reservados
+        <a href="https://www.linkedin.com/in/ja-bg/" target="_blank" type="button" 
+        class="btn btn-floating btn-light btn-lg ml-3">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/xocoduda" target="_blank" type="button"
+          class="btn btn-floating btn-light btn-lg">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </footer>
+    {% endblock %}
+    {% comment %} Script que llama al js del modal de las salas {% endcomment %}
+    <script src="{% static 'js/modalTarifas.js' %}"></script>
+    {% comment %} Script que llama al js del modal de las cookies {% endcomment %}
+    <script src="{% static 'js/modalCookies.js' %}"></script>
+  </body>
+</html>

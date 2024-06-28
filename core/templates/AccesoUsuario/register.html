@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block titulo %}Editar Perfil{% endblock %}
+{% load static %} 
+{% block cuerpo %}
+<main style="background: linear-gradient(to right, #ea52f8, #0066ff);">
+  <div class="container pt-md-5 pb-md-5 pt-3 pb-3">
+    <div class="row justify-content-center align-items-center h-100 mt-5">
+      <div class="col-lg-12 col-xl-8">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body shadow p-md-5" style="border-radius: 25px;">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
+                <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-4 mt-2">
+                  <i class="fas fa-music fa-fw" style="vertical-align: middle; font-size: 0.75em;"></i>
+                  <span>¡Falta sólo el canto de un duro!</span>
+                  <i class="fas fa-music fa-fw" style="vertical-align: middle; font-size: 0.75em;"></i>
+              </p>                
+              <form class="mx-1 mx-md-4" method="post">
+                  {% csrf_token %}
+                  <div class="row mb-4 align-items-center">
+                    <div class="col-md-6">
+                      <div class="d-flex align-items-center">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="username">Nombre:</label>
+                            <input type="text" id="username" name="username" class="form-control"/>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="d-flex align-items-center">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="id_email">Correo electrónico:</label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{ user_form.email.value }}" />
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} Recolector de mensajes de django, como errores {% endcomment %}
+                  {% if form.errors %}
+                  <div class="alert alert-danger">
+                    <ul>
+                      {% for field in form %}
+                        {% for error in field.errors %}
+                          <li>{{ error }}</li>
+                        {% endfor %}
+                      {% endfor %}
+                      {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  {% endif %}
+                  <div>
+                    <p class="pt-2">
+                      La contraseña debe contener al menos:
+                    </p>
+                    <ul>
+                      <li>8 caracteres o más</li>
+                      <li>Una letra mayúscula</li>
+                      <li>Una letra minúscula</li>
+                      <li>Un número</li>
+                    </ul>
+                  </div>
+                  <div class="row mb-4 align-items-center">
+                    <div class="col-md-6">
+                      <div class="d-flex align-items-center">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                          <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="password1">Contraseña:</label>
+                              <div class="input-group">
+                                <input type="password" id="password1" name="password1" class="form-control" />
+                                <span class="input-group-text">
+                                  <i class="fa fa-eye" id="togglePassword1" style="cursor: pointer"></i>
+                                </span>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="d-flex align-items-center">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                          <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                            <label class="form-label" for="password2">Repite la contraseña:</label>
+                            <div class="input-group">
+                              <input type="password" id="password2" name="password2" class="form-control" />
+                                <span class="input-group-text">
+                                  <i class="fa fa-eye" id="togglePassword2" style="cursor: pointer"></i>
+                                </span>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <div class="d-flex align-items-center">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" required/>
+                        <label class="form-check-label" for="form2Example3c">
+                          Acepto las Condiciones Generales de Uso y la Política de Protección de Datos de Karaoke Launge-Bar Taró.
+                        </label>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center pb-5" style="gap: 10px;">
+                    <button type="submit" class="btn btn-primary btn">
+                      Terminar registro
+                    </button>
+                    <p class="text-center pt-2 mb-0" style="margin-left: 10px;">
+                      o
+                    </p>
+                    <p class="text-right pt-2 mb-0" style="margin-left: 10px;">
+                      <a href="{% url 'core:login' %}">
+                        ¿Tienes ya una cuenta?
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% comment %} Este script me permite cambiar la visibilidad de la contraseña y de su repetición {% endcomment %}
+<script>
+  $(document).ready(function () {
+    $('#togglePassword1').on('click', function () {
+      const type = $('#password1').attr('type') === 'password' ? 'text' : 'password';
+        $('#password1').attr('type', type);
+        $(this).toggleClass('fa-eye fa-eye-slash');
+    });
+    $('#togglePassword2').on('click', function () {
+      const type = $('#password2').attr('type') === 'password' ? 'text' : 'password';
+        $('#password2').attr('type', type);
+        $(this).toggleClass('fa-eye fa-eye-slash');
+    });
+  });
+</script>
+{% endblock %}

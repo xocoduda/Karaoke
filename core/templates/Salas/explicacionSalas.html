@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %}
+{% block cuerpo %}
+<main style="background-color: #e1cedd;">
+    {% comment %} Este contenedor me genera espacio para cuadrar el estilo {% endcomment %}
+    <div class="container-fluid pt-5 mb-5">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; 
+                height: 400px; margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        Sala principal
+                    </h3>
+                    <img alt="Kabukicho Arcade" src="{% static 'img/principal.jpeg' %}" style="width: 100%; 
+                    height: 100%; object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 0;">Relájate y tómate unas copas con nuestro increíble 
+                            servicio de bar mientras disfrutas de algún espectáculo o de algún valiente que se 
+                            atreve a cantar delante de todo el público.<br><br> ¡Pincha en el botón para ver 
+                            los espectáculos que tenemos preparados esta semana!</p>
+                        <a class="btn btn-lg btn-primary mt-3" href="{% url 'core:programacionSemanal' %}">
+                            Saber más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 pt-5 pb-5 mb-5" style="background-color: white;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center text-uppercase display-5">
+                    Nuestras salas 
+                        <span style="color: #e1cedd;">únicas</span> 
+                    y temáticas
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; 
+                height: 400px; margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        Kabukicho Arcade
+                    </h3>
+                    <img alt="Kabukicho Arcade" src="{% static 'img/kabukicho.jpeg' %}" style="width: 100%; 
+                    height: 100%; object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s ease; 
+                    display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 10px;">
+                            Sala de karaoke íntima y lujosa para 4 personas, con motivos retro de arcade y 
+                            neones rojos. Decoración minimalista y emocionante, ideal para cantar y divertirse.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; height: 400px; 
+                margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        The White Dragon
+                    </h3>
+                    <img alt="The White Dragon" src="{% static 'img/dragon.jpeg' %}" style="width: 100%; height: 100%; 
+                    object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s ease; 
+                    display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 10px;">
+                            Sala pequeña y acogedora para 4 personas, con un dragón de neon blanco como decoración 
+                            principal. La iluminación de neón blanco crea un ambiente emocionante y único para 
+                            cantar y disfrutar de la música con amigos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; height: 400px; 
+                margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        The Snake's Pit
+                    </h3>
+                    <img alt="The Snake's Pit" src="{% static 'img/pit.jpeg' %}" style="width: 100%; height: 100%; 
+                    object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                    background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s ease; 
+                    display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 10px;">
+                            Sala de 6 personas, con un diseño inspirado en una serpiente de neón verde que se 
+                            enrolla por las paredes, creando un ambiente emocionante y sibilino para disfrutar
+                            como nunca de la música.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; 
+                height: 400px; margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        Early Q's
+                    </h3>
+                    <img alt="Early Q's" src="{% static 'img/early.jpeg' %}" style="width: 100%; height: 100%; 
+                    object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s 
+                    ease; display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 10px;">
+                            Sala de karaoke opulenta para 8 personas, con un diseño que evoca la elegancia de 
+                            un club nocturno, donde la iluminación de neón amarillo dorado se combina con 
+                            detalles de oro y madera oscura, creando un espacio sofisticado y exclusivo para 
+                            disfrutar cantando con la mejor compañía.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; 
+                height: 400px; margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        Bibi’s Bar
+                    </h3>
+                    <img alt="Bibi’s Bar" src="{% static 'img/bibis.jpeg' %}" style="width: 100%; height: 100%;
+                    object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s ease; display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 10px;">
+                            La sala más glamurosa para 10 personas, con un diseño inspirado en la pasión, donde 
+                            la iluminación de neón rosa intenso se combina con decoraciones de labios y tacones 
+                            de mujer, creando un espacio emocionante y seductor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-container" style="position: relative; overflow: hidden; max-width: 100%; 
+                height: 400px; margin-bottom: 20px;">
+                    <h3 style="position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; 
+                    background-color: rgba(0, 0, 0, 0.5); color: white; z-index: 1;">
+                        Wallace's Corp
+                    </h3>
+                    <img alt="Wallace's Corp" src="{% static 'img/wallace.jpeg' %}" style="width: 100%; 
+                    height: 100%; object-fit: cover; transition: transform 0.3s ease;" />
+                    <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                     background-color: rgba(0, 0, 0, 0.6); color: white; opacity: 0; transition: opacity 0.3s 
+                     ease; display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <p style="margin: 0; padding: 10px;">
+                            La Wallace's Corp es la joya de la corona. Espacio para 20 personas, donde la 
+                            iluminación de neón naranja vibrante se combina con detalles de lujo y opulencia, 
+                            creando un espacio impresionante y regio que se convierte en el epicentro de la 
+                            diversión y la celebración.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 pt-5 pb-4 mb-5" style="background-color: white;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center text-uppercas">
+                    Te han entrado ganas de cantar, ¿verdad? ¡Reserva una de nuestras salas y pásatelo como nunca!
+                </h3>
+                   {% comment %} Este filtro obliga al usuario a registrarse o loguearse para reservar una sala {% endcomment %}
+                {% if request.user.is_authenticated %}
+                <div class="text-center mt-4">
+                    <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:listaSalas' %}">
+                        Reservar sala
+                    </a>
+                </div>
+                {% else %}
+                <div class="container-fluid d-flex align-items-center justify-content-center pt-3">
+                  <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p>
+                                Regístrate o accede a tu cuenta para reservar tu sala.
+                            </p> 
+                            <a href="{% url 'core:indexUsuario' %}" class="btn btn-small btn-md btn-danger opacity-50">
+                                Acceder o registrarse
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+   {% comment %} Este script me genera el efecto de opacidad cuando paso el puntero por encima de la imagen {% endcomment %}
+<script>
+    $(document).ready(function(){
+        $('.image-container').hover(
+            function() {
+                $(this).find('.overlay').css('opacity', '1');
+            },
+            function() {
+                $(this).find('.overlay').css('opacity', '0');
+            }
+        );
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+    {% comment %} Este contenedor reservará espacio para que no se pise el título con el navheader {% endcomment %}
+    <div class="container-fluid pt-4 pb-5">
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb" class="bg-white rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb bg-white">
+                        <ol class="breadcrumb mb-0 bg-white">
+                            <li class="breadcrumb-item">
+                                <a href=href="{% url 'core:indice' %}">
+                                    Página principal
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'core:indexUsuario' %}">
+                                    Portal de entrada
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'core:perfil' %}">
+                                    Perfil
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Bonos comprados
+                            </li>
+                        </ol>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3>Bonos comprados</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Nombre del receptor
+                        </th>
+                        <th>
+                            Apellidos del receptor
+                        </th>
+                        <th>
+                            Precio
+                        </th>
+                        <th>
+                            Mensaje
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bono in bonos %}
+                        <tr>
+                            <td>
+                                {{ bono.nombre_receptor }}
+                            </td>
+                            <td>
+                                {{ bono.apellidos_receptor }}
+                            </td>
+                            <td>
+                                {{ bono.valor }} €
+                            </td>
+                            <td>
+                                {{ bono.mensaje }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock %}

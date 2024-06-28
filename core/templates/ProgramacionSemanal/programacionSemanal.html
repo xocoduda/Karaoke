@@ -1,0 +1,119 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+  <div id="intro" class="bg-image position-relative mb-5" style="background-image: url('{% static 'img/almanaque.jpeg' %}'); background-size: cover; background-position: center; height: 100vh;">
+    <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+            <h1 class="mb-0 text-white display-3">¡Eventos únicos cada semana!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 mb-5 p-5">
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          Descubre la gran variedad de eventos para todos los públicos que ofrece <em>Taró</em>. Con una 
+          programación siempre en constante evolución, llena de oportunidades para conectar, disfrutar y 
+          disfrutar de experiencias únicas, nuestro karaoke es el lugar perfecto para sumergirse en la 
+          <strong>cultura</strong>, la <strong>diversión</strong> y la <strong>buena compañía</strong>. 
+          ¡Únete a nuestra comunidad y sé parte de ella, donde cada evento es una ocasión especial para 
+          crear recuerdos duraderos!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top img-fluid mx-auto d-block pt-3 pb-3" alt="Personas conversando en la sala principal del karaoke" 
+          src="{% static 'img/networking.jpeg' %}" style="max-width: 400px;" />
+          <div class="card-block">
+            <h5 class="card-title text-center">
+              NetThursday
+            </h5>
+            <p class="card-text pl-3 pr-3">
+              Conecta con profesionales, intercambia ideas y amplía tus oportunidades laborales en un ambiente 
+              acogedor y propicio para el crecimiento profesional."
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top img-fluid mx-auto d-block pt-3 pb-3" alt="Cantante famoso ofreciendo un espectáculo" 
+          src="{% static 'img/cantante.jpeg' %}" style="max-width: 400px;" />
+          <div class="card-block">
+            <h5 class="card-title text-center">
+              Justino Vílchez, en directo
+            </h5>
+            <p class="card-text pl-3 pr-3">
+              Disfruta de la actuación del último ganador de 'Operación Tehundo', en un viernes lleno de música 
+              y talento. ¡No te lo pierdas!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top img-fluid mx-auto d-block pt-3 pb-3" alt="Un dj famoso haciendo bailar a la gente" 
+          src="{% static 'img/dj.jpeg' %}" style="max-width: 400px;" />
+          <div class="card-block">
+            <h5 class="card-title text-center">
+              Sábado al ritmo de "Dj Ango"
+            </h5>
+            <p class="card-text pl-3 pr-3">
+              La fiebre del techno llega a Taró de la mano de Dj Ango. ¡Muévete al ritmo de los beats más 
+              candentes de la escena!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top img-fluid mx-auto d-block pt-3 pb-3" alt="Un espectáculo de flamenco en la sala principal de un karaoke" 
+          src="{% static 'img/flamenco.jpeg' %}" style="max-width: 400px;" />
+          <div class="card-block">
+            <h5 class="card-title text-center">
+              ¡Domingo y olé!
+            </h5>
+            <p class="card-text pl-3 pr-3">
+              Prepárate para una noche llena de pasión y ritmo con nuestro espectáculo de flamenco en vivo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% comment %} Este contenedor me genera espacio para cuadrar el estilo {% endcomment %}
+  <div class="container-fluid mb-5 pb-5">
+    <div class="container-fluid mb-5 pb-5">
+    </div>
+  </div>
+  <div class="container-fluid mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <blockquote class="blockquote">
+                <p class="mb-0">
+                    Divertido no es lo contrario de serio. Divertido es lo contrario de aburrido y de nada más.
+                </p>
+                <footer class="blockquote-footer pt-3">
+                    Gilbert Keith Chesterton en <cite>El hombre corriente</cite>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+  </div>
+  {% comment %} Este contenedor me genera espacio para cuadrar el estilo {% endcomment %}
+  <div class="container-fluid mb-5 pb-5">
+  </div>
+</main>
+{% endblock %}

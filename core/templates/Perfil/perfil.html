@@ -1,0 +1,218 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+    {% comment %} Este contenedor reservará espacio para que no se pise el breadcrumb con el navheader {% endcomment %}
+    <div class="container-fluid pb-5" style="background-color: #eee;">
+    </div>
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <a href=href="{% url 'core:indice' %}">
+                                    Página principal
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'core:indexUsuario' %}">
+                                    Portal de entrada
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Perfil
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="{% if usuario.profile_images %}{{ usuario.profile_images.url }}
+                            {% else %}{{ MEDIA_URL }}profile_images/default.png{% endif %}" alt="Imagen del usuario" 
+                            class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-1">
+                                {{ usuario.username | capfirst }}
+                            </h5>
+                            <p class="text-muted mb-1">
+                                {{ usuario.email }}
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center mb-2">
+                            <button type="button" onclick="window.location.href='{% url 'core:actualizarUsuario' %}'" 
+                            class="btn btn-primary mr-2">
+                                Editar
+                            </button>
+                            <form method="post" action="{% url 'core:darDeBaja' %}">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-outline-primary ml-2" data-toggle="modal" 
+                                data-target="#confirmModal">Dar de baja</button>                                
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                                <p class="mb-4"> 
+                                    Bonos comprados
+                                </p>
+                                {% comment %} Filtro para comprobar si ha comprado bonos o no {% endcomment %}
+                                {% if bonos %}
+                                    <div class="text-center mt-4">
+                                        <a class="btn btn btn-outline-secondary" href="{% url 'core:bonosComprados' %}">
+                                            Ver bonos
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    <p>
+                                        No has comprado ningún bono.
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="mb-0">
+                                        Nombre
+                                    </p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="text-muted mb-0">
+                                        {{ usuario.username | capfirst }}
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="mb-0">
+                                        Correo electrónico
+                                    </p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="text-muted mb-0">
+                                        {{ usuario.email }}
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="mb-0">
+                                        Fecha de registro:
+                                    </p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="text-muted mb-0">
+                                        {{ usuario.date_joined }}
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                <p class="mb-0">
+                                    Último inicio de sesión
+                                </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0">
+                                    {{ usuario.last_login }}
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">
+                                    Nivel de usuario:
+                                </p>
+                            </div>
+                            <div class="container mt-5">
+                                <div class="row">
+                                  <div class="col-sm-9">
+                                    <div class="progress rounded" style="height: 5px;">
+                                      <div id="random-progress" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                                <p class="mb-4"> 
+                                    Salas reservadas
+                                </p>
+                                {% comment %} Filtro para comprobar si ha reservado salas o no {% endcomment %}
+                                {% if salas %}
+                                    <div class="text-center mt-4">
+                                        <a class="btn btn btn-outline-secondary" href="{% url 'core:salasReservadas' %}">
+                                            Ver salas 
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    <p>
+                                        No reservado ninguna sala.
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% comment %} Este modal saltará para confirmar la baja de la cuenta en la base de datos {% endcomment %}
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">
+                    Confirmar eliminación
+                </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <form method="post" action="{% url 'core:darDeBaja' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        Eliminar cuenta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var randomWidth = Math.floor(Math.random() * 101);
+      // Establece el ancho de la barra de progreso
+      var progressBar = document.getElementById("random-progress");
+      progressBar.style.width = randomWidth + "%";
+      progressBar.setAttribute("aria-valuenow", randomWidth);
+    });
+  </script>
+{% endblock %}

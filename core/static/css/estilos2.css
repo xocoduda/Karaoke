@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "Playfair";
+  src: url("../fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf") format("truetype");
+}
+
+body {
+  font-family: "Playfair", sans-serif;
+}
+
+.navbar-brand {
+  letter-spacing: 3px;
+  font-size: 2rem;
+  font-weight: 500;
+  /* Estilo para la marca de la barra de navegación */
+}
+
+.navbar-scroll .navbar-brand,
+.navbar-scroll .nav-link,
+.navbar-scroll .fa-bars {
+  color: #fff;
+}
+
+.navbar-scroll {
+  box-shadow: none;
+}
+
+.navbar-scrolled {
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.navbar-scrolled .navbar-brand,
+.navbar-scrolled .nav-link,
+.navbar-scrolled .fa-bars {
+  color: #4f4f4f;
+}
+
+.navbar-scrolled {
+  background-color: #fff;
+}
+
+.display-1 {
+  font-weight: 500 !important;
+  letter-spacing: 40px;
+}
+
+/* Estilos generales */
+.conocenos,
+.salas,
+.tarifas,
+.programacion,
+.bonos,
+.admin,
+.index,
+.reserva,
+.logo,
+.navbar-toggler {
+  font-size: 1.5rem;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 991px) {
+  .conocenos,
+  .salas,
+  .tarifas,
+  .programacion,
+  .bonos,
+  .admin,
+  .index,
+  .reserva,
+  .logo,
+  .navbar-toggler  {
+    font-size: 2rem;
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 450px) {
+  .conocenos,
+  .salas,
+  .tarifas,
+  .programacion,
+  .bonos,
+  .admin,
+  .index,
+  .reservav,
+  .logo,
+  .navbar-toggler  {
+    font-size: 2.5rem;
+  }
+}
+
+/* Media query para pantallas medianas */
+@media (min-width: 550px) and (max-width: 750px) {
+  .conocenos,
+  .salas,
+  .tarifas,
+  .programacion,
+  .bonos,
+  .admin,
+  .index,
+  .reserva,
+  .logo,
+  .navbar-toggler  {
+    font-size: 2rem;
+  }
+}
+
+/* Media query para pantallas grandes */
+@media (min-width: 800px) and (max-width: 990px) {
+  .conocenos,
+  .salas,
+  .tarifas,
+  .programacion,
+  .bonos,
+  .admin,
+  .index,
+  .reserva,
+  .logo,
+  .navbar-toggler  {
+    font-size: 2rem;
+  }
+}
+
+/* Media query para pantallas extra grandes */
+@media (min-width: 1600px) {
+  .conocenos,
+  .salas,
+  .tarifas,
+  .programacion,
+  .bonos,
+  .admin,
+  .index,
+  .reserva,
+  .logo,
+  .navbar-toggler  {
+    font-size: 2rem;
+  }
+}

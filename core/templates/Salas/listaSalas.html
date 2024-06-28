@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %}
+{% block cuerpo %}
+<main style="background-color: #e1cedd;">
+    {% comment %} Este contenedor me genera espacio para cuadrar el estilo {% endcomment %}
+    <div class="container-fluid pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+    </div>
+    <div class="container pb-5">
+        <h2 class="pb-3 text-center display-5">
+            ¡Reserva tu sala preferida el día que quiera y a la hora que quieras!
+        </h2>
+        {% comment %} Recolector de mensajes de django, como errores {% endcomment %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="get" class="mb-4">
+            <label for="dia">Elige un día de la semana:</label>
+            <select name="dia" id="dia" class="form-control" onchange="this.form.submit()">
+                {% for dia in dias_disponibles %}
+                    <option value="{{ dia }}" {% if dia == dia_seleccionado %}selected{% endif %}>{{ dia }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        {% for sala in salas %}
+            <div class="card mb-3" style="border: 1px solid #ddd; margin-bottom: 20px; background-color: #ced7f4;">
+                <div class="card-header d-flex justify-content-between align-items-center" 
+                style="background-color: #5e7dda; border-bottom: 1px solid #ddd; font-weight: bold;">
+                    <span>
+                        {{ sala.nombre }} - Capacidad: {{ sala.capacidad }}
+                    </span>
+                    <span>
+                        {{ sala.ubicacion }}
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for horario, is_reserved in horarios_info %}
+                            {% if horario.sala == sala %}
+                                <div class="col-md-2 mb-2" style="padding: 5px;">
+                                    {% if not is_reserved %}
+                                        <a href="{% url 'core:reservarSala' horario.id %}" 
+                                        class="card text-center p-2 text-decoration-none" style="display: 
+                                        block; padding: 10px; border: 1px solid #5e7dda; border-radius: 5px; 
+                                        text-align: center; color: #5e7dda;">
+                                            <div>
+                                                {{ horario.inicio }} - {{ horario.fin }}
+                                            </div>
+                                            <div>
+                                                {{ horario.precio }} €
+                                            </div>
+                                            <button class="btn btn-primary mt-2" style="width: 100%; 
+                                            margin-top: 10px;">Reservar</button>
+                                        </a>
+                                    {% else %}
+                                        <div class="card text-center p-2 text-muted" style="display: block; 
+                                        padding: 10px; border: 1px solid #6c757d; border-radius: 5px; 
+                                        text-align: center;">
+                                            <div>
+                                                {{ horario.inicio }} - {{ horario.fin }}
+                                            </div>
+                                            <div>
+                                                Reservado
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

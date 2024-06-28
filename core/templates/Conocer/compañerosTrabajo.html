@@ -1,0 +1,90 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+    <div style="position: relative; width: 100%; height: 600px; background-image: url('{% static 'img/empleadosLlegando.jpeg' %}'); 
+    background-size: cover; background-position: center; margin-bottom: 25%;">
+        <div style="position: absolute; top: 120%; left: 84%; right: -70%; transform: translate(-90%, -50%); 
+        text-align: center;">
+            <div style="position: relative; background-color: white; max-width: 1000px; margin: 20px auto; 
+            padding: 20px 60px;">
+                <h4 class="mt-1 display-5" style="text-align: center;">
+                    Para una sesión de karaoke y Team Building o para un seminario
+                </h4>
+                <p class="mt-4">
+                    ¡Nuestras salas Taró y nuestros servicios a medida están ahí para tu empresa! Los momentos 
+                    de relajación y humor no se reservan para las noches con los amigos. ¿Qué podría ser más 
+                    unificante que una velada de karaoke con los compañeros de empresa? Karaoke Taró te 
+                    invita a (re)descubrir a tus compañeros alrededor de un micrófono y una pantalla: fuera 
+                    de una sala de reuniones.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="card shadow p-3 mb-5 rounded w-400 bg-opacity-10" style="background-color: rgba(29, 132, 179, 0.05);">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <img alt="Empleandos brindando con sus cócteles" src="{% static 'img/empleadosBrindando.jpeg' %}" 
+                        style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="col-md-6 d-flex flex-column justify-content-center">
+                        <p class="display-5">
+                            ¿Unos buenos cócteles para acompañar la velada?
+                        </p>
+                        <p>
+                            Tenemos una amplia variedad de bebidas espirituosas para ese extra a la diversión o 
+                            animar al más tímido de la plantilla. 
+                        </p>
+                        <div class="text-center mt-4">
+                            <a id="verTarifasBebidas" class="btn btn-lg btn-outline-secondary" href="#!" data-toggle="modal" 
+                            data-target="#modal-601512">Ver carta</a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pb-5 mb-5">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h4 class="display-5 mb-4">
+                    Un concepto, mil posibilidades para las empresas.
+                </h4>
+                <p>
+                    Quieres organizar un día de estudio, un taller, un workshop, un momento de trabajo en 
+                    equipo o incluso un almuerzo-karaoke: Karaoke Taró os da la bienvenida a ti y a tus 
+                    compañeros de trabajo. Podemos ofreceros privatización o semiprivatización, día y noche.
+                </p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <img alt="Empleados disfrutando de su tiempo libre en el karaoke" src="{% static "img/empleadosRiendo.jpeg" %}" 
+                style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+    {% comment %} Modal de tarifas de bebidas {% endcomment %}
+    <div class="modal fade" id="modal-601512" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tarifas de bebidas 2024</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Imagen" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+ {% comment %} Este script llamará al correspondiente js para abrir el modal {% endcomment %}
+<script src="{% static 'js/modalBebidas.js' %}"></script>
+{% endblock %}

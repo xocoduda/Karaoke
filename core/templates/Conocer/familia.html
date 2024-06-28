@@ -1,0 +1,84 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+  <div class="bg-image position-relative mb-5" style="background-image: url('{% static 'img/familiaCabecera.jpeg' %}'); 
+  background-size: cover; background-position: center; height: 100vh;">
+    <div class="container d-flex justify-content-center align-items-center h-100 position-relative">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+            <h1 class="mt-5 text-white display-3">
+              ¡El karaoke no entiende de edades!
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="card shadow p-3 mt-5 mb-5 rounded w-50 bg-opacity-10" style="background-color: rgba(136, 28, 219, 0.05);">
+      <div class="card-body">
+        <p>
+          No hay límites de edad en nuestra diversión musical. Sin embargo, es importante tener en cuenta que
+          los menores pueden unirse a la diversión solo hasta las 23:00. Si tienes hijos menores de 16 años,
+          necesitarán estar acompañados por un padre o tutor legal después de este horario.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <img alt="Una familia cantando en una sala de karaoke" src="{% static "img/familiaCantando.jpeg" %}" 
+        style="max-width: 100%; height: auto;">
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h4 class="display-5 mb-4">
+          Lo único que importa son las ganas de cantar
+        </h4>
+        <p>
+          Puedes venir con toda tu familia: hijos, abuelos y cualquier otro ser querido. Nuestro objetivo es 
+          crear momentos únicos y alegres para todos.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h4 class="display-5 mb-4">
+          ¿Quieres celebrar el cumpleaños de un niño o adolescente? 
+        </h4>
+        <p>
+          ¡Estás en el lugar adecuado! Tendrán acceso a una enorme selección de más de 35,000 canciones y 
+          podrán crear listas de reproducción colaborativas a través de nuestra plataforma en línea.
+        </p>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <img alt="Celebración de cumpleaños de una niña chica con su familia en el karaoke" 
+        src="{% static "img/cumpleNiña.jpeg" %}" style="max-width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <img alt="Tarta de chocolate del karaoke Taró" src="{% static "img/tartaTaro.jpeg" %}" 
+        style="max-width: 100%; height: auto;">
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h4 class="display-5 mb-4">
+          ¿Necesitas un pastel de cumpleaños para la ocasión?
+        </h4>
+        <p>
+          Se pueden reservar bebidas, dulces y un pastel para 4 personas. Además, proporcionamos 
+          platos y cubiertos. ¿Necesitas un pastel más grande? ¡Contáctanos! Por razones de 
+          seguridad, solo permitimos una vela encendida en la sala.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

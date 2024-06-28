@@ -1,0 +1,117 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+    <div style="position: relative; width: 100%; height: 600px; background-image: url('{% static 'img/byeSingle.jpeg' %}'); 
+    background-size: cover; background-position: center; margin-bottom: 25%;">
+        <div style="position: absolute; top: 120%; left: 84%; right: -70%; transform: translate(-90%, -50%); text-align: center;">
+            <div style="position: relative; background-color: white; max-width: 1000px; margin: 20px auto; padding: 20px 60px;">
+                <h4 class="mt-1 display-5" style="text-align: center;">
+                    ¿Eres el padrino o la madrina de la boda y te encargas de organizar la despedida de soltera? 
+                </h4>
+                <p class="mt-4">
+                    ¡Karaoke Taró es el lugar ideal para celebrarla! No solo ofrecemos el espacio perfecto, sino 
+                    que también te ayudamos a planificar un día inolvidable.            
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pb-5 mb-5">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h4 class="display-5 mb-4">
+                    La posibilidad de un gran evento en tu mano
+                </h4>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Hemos pensado en todo para hacer tu despedida de soltero única:
+                            </p>
+                            <ul>
+                                <li class="list-item">
+                                    Salas privadas: disfruta de la diversión en total privacidad.
+                                </li>
+                                <li class="list-item">
+                                    Bar privado: en nuestras salas más grandes, disfruta de un bar exclusivo.
+                                </li>
+                                <li class="list-item">
+                                    Actividad divertida: un karaoke es siempre una actividad divertida y emocionante.
+                                </li>
+                                <li class="list-item">
+                                    Horarios flexibles: ofrecemos franjas horarias durante todo el día para 
+                                    adaptarnos a tu plan.
+                                </li>
+                                <li class="list-item">
+                                    Zonas de bar exclusivas: relájate y toma una copa antes de seguir con 
+                                    tu programa del día o continuar la fiesta.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <img alt="Celebración de despedida de soltera en el karaoke" src="{% static "img/depedida1.jpeg" %}" 
+                style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-center">
+                <img alt="Amigos disfrazados en una celebración de despedida de soltero en el karaoke" 
+                src="{% static "img/despedidaDisfraz.jpeg" %}" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h4 class="display-5 mb-3">
+                    Una despedida de soltero personalizada
+                </h4>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li class="list-item">
+                                    Lista de reproducción colaborativa: cada invitado puede añadir sus 
+                                    canciones favoritas.
+                                </li>
+                                <li class="list-item">
+                                    Fotos y vídeos: graba los mejores momentos dentro de la sala.
+                                </li>
+                                <li class="list-item">
+                                    Fotomatón: crea gifs animados para compartir en redes sociales 
+                                    (no olvides el hashtag #KaraokeTaro).
+                                </li>
+                                <li class="list-item">
+                                    Eshop: ordena bebidas y tapas por adelantado para tener todo listo y 
+                                    controlar tu presupuesto.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                 {% comment %} Este filtro obliga al usuario a registrarse o loguearse para reservar una sala {% endcomment %}
+                {% if request.user.is_authenticated %}
+                <div class="text-center mt-4">
+                    <a class="btn btn-lg btn-outline-secondary" href="{% url 'core:listaSalas' %}">
+                        Reservar sala
+                    </a>
+                </div>
+                {% else %}
+                <div class="container-fluid d-flex align-items-center justify-content-center pt-3">
+                  <div class="row">
+                      <div class="col-md-12 text-center">
+                          <p>
+                            Regístrate o accede a tu cuenta para reservar tu sala.
+                          </p> 
+                          <a href="{% url 'core:indexUsuario' %}" class="btn btn-small btn-md btn-danger opacity-50">Acceder o registrarse</a>
+                      </div>
+                  </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

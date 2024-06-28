@@ -1,0 +1,178 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} Karaoke-Lounge Bar Taró {% endblock %} 
+{% block cuerpo %}
+<main>
+  {% comment %}Este contenedor reservará espacio para que no se pise la imagen de la cabecera con el navheader {% endcomment %}
+  <div class="container-fluid mb-5 pb-5">
+  </div>
+  <div class="container-fluid mt-5 pt-5 pb-5 mb-5" style="background-color: #e1cedd;">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center text-uppercase display-3">
+          La tarjeta de regalo de Karaoke Taró
+        </h3>
+        <hr class="mx-auto" style="width:20%; height:1px;">
+        <p class="text-center">
+          ¿Buscando el regalo perfecto para un aficionado de la música?<br>
+          ¡La tarjeta de regalo para una sesión de karaoke es el regalo que necesitas!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h3 class="display-5 font-weight-bold mb-2">
+              Karaoke, un regalo distinto e innovador
+            </h3>
+            <p class="mt-2 mb-5">
+              ¡Si estás buscando el regalo perfecto para el alma de la fiesta en tu grupo de amigos que 
+              celebra su cumpleaños, o si necesitas una despedida memorable para ese compañero que siempre 
+              está tarareando, la Tarjeta de Regalo de Karaoke de Taró es exactamente lo que necesitas! 
+              Nuestras tarjetas de regalo son flexibles y se adaptan a cualquier presupuesto, válidas por un 
+              locales y se pueden usar fácilmente en línea en nuestro sitio web.
+            </p>
+            {% comment %} Redirección de anclaje hacia la compra de bono {% endcomment %}
+            <a href="#formulario" class="btn btn-danger mt-3 opacity-50">
+              Comprar un bono
+          </a>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <img alt="Microfono con flores" src="{% static "img/bono.jpeg" %}" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 pt-5 pb-5 mb-5" style="background-color: #e1cedd;">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center text-uppercase pb-4 display-5">
+          ¿Por qué regalar una tarjeta de regalo de Karaoke Taró?
+        </h3>
+        <div class="row justify-content-center">
+          <div class="col-md-3 d-flex flex-column align-items-center">
+            <img class="pb-1" alt="Caja de regalo" style="max-width: 50%; height: auto;" src="{% static "img/caja-de-regalo.png" %}" />
+            <dl>
+              <dt class="d-flex flex-column text-uppercase align-items-center">
+                Una sorpresa única
+              </dt>
+              <dd>
+                Regalar una sesión de karaoke es la manera perfecta de destacar con un regalo auténtico y divertido.
+              </dd>
+            </dl>
+          </div>
+          <div class="col-md-3 d-flex flex-column align-items-center">
+            <img class="pb-1" alt="Chasquido de dedos" style="max-width: 50%; height: auto;" src="{% static "img/chasquido.png" %}" />
+            <dl>
+              <dt class="d-flex flex-column text-uppercase align-items-center">
+                Sencillez y comodidad
+              </dt>
+              <dd>
+                Sólo necesitas introducir un sencillo código al reservar en nuestro sitio web.
+              </dd>
+            </dl>
+          </div>
+          <div class="col-md-3 d-flex flex-column align-items-center">
+            <img class="pb-1" alt="Cara feliz" style="max-width: 50%; height: auto;" src="{% static "img/feliz.png" %}" />
+            <dl>
+              <dt class="d-flex flex-column text-uppercase align-items-center">
+                Diversión asegurada
+              </dt>
+              <dd>
+                Es un regalo que seguramente encantará y dejará recuerdos duraderos.
+              </dd>
+            </dl>
+          </div>
+          <div class="col-md-3 d-flex flex-column align-items-center">
+            <img alt="Corazon" style="max-width: 50%; height: auto;" src="{% static "img/corazon.png" %}" />
+            <dl>
+              <dt class="d-flex flex-column text-uppercase align-items-center">
+                Libertad de elección
+              </dt>
+              <dd>
+                Sin restricciones: el beneficiario tiene la libertad de elegir el lugar, la sala y el horario 
+                que más le convenga.
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" id="formulario">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center text-uppercase display-5">
+          Regalo de una tarjeta Taró
+        </h3>
+        <p class="text-center">
+          La tarjeta te llegará a tu correo electrónico para que decidas enviársela tu mismo o imprimirla y 
+          regarlársela en persona, ¡tú decides!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            {% if request.user.is_authenticated %}
+            <form method="post" action="{% url 'core:bonos' %}" class="d-flex flex-column align-items-center pt-5 pb-5" style="background-color: #e1cedd;">
+              {% csrf_token %}
+              {{ form.non_field_errors }}
+              <div class="mb-3" style="max-width: 400px; width: 100%;">
+                <label for="id_valor" class="form-label">Precio:</label>
+                {{ form.valor }}
+              </div>
+              <div class="mb-3" style="max-width: 400px; width: 100%;">
+                <label>De:</label>
+              </div>
+              <div class="mb-3" style="max-width: 400px; width: 100%;">
+                <input type="text" class="form-control" id="id_username" value="{{ request.user.username }}" disabled>
+              </div>
+              <div class="mb-3" style="max-width: 400px; width: 100%;">
+                <input type="email" class="form-control" id="id_email" value="{{ request.user.email }}" disabled>
+              </div>
+              <div class="mb-3" style="max-width: 400px; width: 100%;">
+                <label>Para:</label>
+              </div>
+              <div class="row mb-3" style="max-width: 400px; width: 100%;">
+                <div class="col-md-6 pe-md-2">
+                  <input type="text" class="form-control" id="id_nombre_receptor" name="{{ form.nombre_receptor.name }}" placeholder="Nombre">
+                </div>
+                <div class="col-md-6 ps-md-2">
+                  <input type="text" class="form-control" id="id_apellidos_receptor" name="{{ form.apellidos_receptor.name }}" placeholder="Apellidos">
+                </div>
+              </div>
+              <div class="mb-3" style="max-width: 400px; width: 100%;">
+                {{ form.mensaje }}
+              </div>
+              <div class="d-flex justify-content-center" style="gap: 10px;">
+                <button type="submit" class="btn btn-primary">Comprar un bono</button>
+              </div>
+            </form>
+            {% else %}
+            <div class="container-fluid d-flex align-items-center justify-content-center py-5">
+              <div class="row w-100">
+                <div class="col-12 text-center">
+                  <h3 class="mb-4 mt-5">Un último paso</h3>
+                  <p>
+                    La única condición que te ponemos para comprar uno de nuestros bonos es que seas miembro. 
+                    Regístrate o accede a tu cuenta para terminar la compra.
+                  </p> 
+                  <a href="{% url 'core:indexUsuario' %}" class="btn btn-small btn-md btn-danger opacity-50">Acceder o registrarse</a>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>   
+          <div class="col-md-6">
+            <img alt="Amigos celebrando un cumpleaños en una sala de karaoke" src="{% static "img/cumple.jpeg" %}" style="max-width: 100%; height: auto;"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
